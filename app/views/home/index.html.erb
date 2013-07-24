@@ -1,0 +1,37 @@
+<% content_for :header do %>
+  <%= javascript_include_tag 'home/index.js' %>
+<% end %>
+
+<div class="container">
+	<div class="hero-unit">
+		<div class="pagination-centered">
+			<p>
+				<canvas id="screen" width=400px; height=400px;>
+				</canvas>
+			</p>
+		</div>
+
+		<div class="row-fluid">
+			<div class="span3">
+				<p>
+					<%= link_to "About", about_path, class: "btn btn-large" %>
+				</p>
+			</div>	
+			<div class="span3">
+				<p>
+					<%= link_to "Blog", blog_path, class: "btn btn-large" %>
+				</p>
+			</div>
+			<div class="span3">
+				<p>
+					<%= link_to "Projects", projects_path, class: "btn btn-large" %>
+				</p>
+			</div>	
+			<div class="span3">
+				<p>
+					<%= link_to "Tutorials", tutorials_path, class: "btn btn-large" %>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
