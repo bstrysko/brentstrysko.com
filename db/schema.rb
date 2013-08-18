@@ -11,19 +11,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130722231435) do
+ActiveRecord::Schema.define(version: 20130817162632) do
 
   create_table "posts", force: true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.datetime "posted"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "projects_id"
+    t.integer  "tutorials_id"
+  end
+
+  create_table "profiles", force: true do |t|
+    t.string "name"
+    t.string "icon_path"
+    t.string "url"
   end
 
   create_table "projects", force: true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  create_table "resume_categories", force: true do |t|
+    t.integer "weight"
+    t.string  "name"
+  end
+
+  create_table "resume_entries", force: true do |t|
+    t.integer "resume_category_id"
+    t.string  "name"
+    t.text    "value"
+    t.date    "begin"
+    t.date    "end"
+  end
+
   create_table "tutorials", force: true do |t|
+    t.string   "title"
+    t.string   "content"
+    t.datetime "posted"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

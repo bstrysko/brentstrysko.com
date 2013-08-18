@@ -3,6 +3,8 @@ BrentstryskoCom::Application.routes.draw do
   root "home#index"
 
   get "/about", to: "home#about"
+  #get "/resume", to: asset_path("brentstrysko_resume.pdf")
+
   get "/blog", to: "posts#index"
 
   resources :posts

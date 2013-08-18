@@ -1,5 +1,42 @@
-<h1>New post</h1>
+<div class="hero-unit">	
+	<fieldset>
+		<legend><h2>New Post</h2></legend>
+		<% if @post.errors.any? %>
+	  	<div id="error_explanation">
+				<h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-<%= render 'form' %>
+	    	<ul>
+	    		<% @post.errors.full_messages.each do |msg| %>
+	      		<li><%= msg %></li>
+	      	<% end %>
+	    	</ul>
+	   	</div>
+	  <% end %>
+		<%= form_for(@post) do |f| %>
+  		<div class="well">
+  			<label>Title</label>
+  			<%= f.text_field :title %>
+  			<label>Content</label>
+  			<%= f.text_area :content, size: "200x20" %>
+				
+				<hr />
 
-<%= link_to 'Back', posts_path %>
+				<label>Project</label>
+				<select>
+					<option>Test Project</option>
+				</select>
+
+				<label>Tutorial</label>
+				<select>
+					<option>Test Tutorial</option>
+				</select>
+
+				<hr />
+
+  			<div class="actions">
+    			<%= f.submit "Submit", class: "btn" %>
+  			</div>
+  		</div>
+		<% end %>
+	</fieldset>
+</div>
