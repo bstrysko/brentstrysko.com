@@ -15,14 +15,18 @@
         <fieldset>
           <legend><%= link_to post.title, post %></legend>
           <div class="well">
-            <%= post.content %>
+            <%= truncate(post.content.html_safe, :length => 80) %>
           </div>
-          <tr>
-            <td><%= link_to 'Show', post %></td>
-            <td><%= link_to 'Edit', edit_post_path(post) %></td>
-            <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          </tr>
+
+          <% if signed_in? %>
+          <div class="pull-right well">
+            <%= link_to 'Edit', edit_post_path(post) %> |
+            <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+          <% end %>
+        
         </fieldset>
+        <hr />
       </div>
     <% end %>
   </tbody>

@@ -1,5 +1,7 @@
 class ProjectsController < ApplicationController
+  before_action :get_images, only: [:new, :edit, :update]
   before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, except: [:index, :show]
 
   # GET /projects
   # GET /projects.json
@@ -67,8 +69,12 @@ class ProjectsController < ApplicationController
       @project = Project.find(params[:id])
     end
 
+    def get_images
+      @images = Image.all
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params[:project]
+      params[:project].permit(:name, :url, :start_date, :end_date, :blurb, :content, :image_id)
     end
 end

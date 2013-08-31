@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :get_projects_and_tutorials, only: [:new, :edit, :update]
 	before_filter :authenticate_user!, except: [:index, :show]
 
   # GET /posts
@@ -26,10 +27,6 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
-
-    if @post.posted.nil?
-      @post.posted = Time.now
-    end
 
     respond_to do |format|
       if @post.save
@@ -72,8 +69,14 @@ class PostsController < ApplicationController
       @post = Post.find(params[:id])
     end
 
+    # For setting references if a post is about a project/tutorial
+    def get_projects_and_tutorials
+      @projects = Project.all
+      @tutorials = Tutorial.all
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params[:post].permit(:title, :content, :posted)
+      params[:post].permit(:id, :title, :content, :published, :posted, :project_id, :tutorial_id)
     end
 end

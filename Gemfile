@@ -4,8 +4,17 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0'
 
 # Use sqlite3 as the database for Active Record
-#gem 'sqlite3'
-gem 'mongo'
+gem 'sqlite3'
+gem 'mongoid', github: 'mongoid/mongoid'
+gem 'bson_ext'
+
+#for Post id
+gem 'mongoid_auto_increment'
+
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+#gem "carrierwave-mongoid", git: "git://github.com/jnicklas/carrierwave-mongoid.git", branch: "mongoid-3.0"
+
+gem 'mongoid-grid_fs', github: 'ahoward/mongoid-grid_fs'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'

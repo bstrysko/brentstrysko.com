@@ -1,6 +1,7 @@
-<h1>Editing post</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @post %> |
-<%= link_to 'Back', posts_path %>
+<div class="hero-unit">	
+	<fieldset>
+		<legend><h2>Edit Post</h2>(<%= link_to 'Show', @post %>)</legend>
+		<hr />
+		<%= render "form" %>
+	</fieldset>
+</div>

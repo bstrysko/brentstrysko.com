@@ -2,7 +2,7 @@ var canvas;
 var context;
 var t = 0;
 
-window.onload = function()
+function init()
 {
 	canvas = document.getElementById("screen");
 	context = canvas.getContext("2d");

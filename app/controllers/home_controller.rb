@@ -3,5 +3,9 @@ class HomeController < ApplicationController
   end
 
   def about
-  end  
+  end
+
+  def iresume
+  	@resume_entries = ResumeEntry.all
+  end
 end

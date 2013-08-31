@@ -27,11 +27,16 @@
 					<%= link_to "Projects", projects_path, class: "btn btn-large" %>
 				</p>
 			</div>	
-			<div class="span3">
-				<p>
-					<%= link_to "Tutorials", tutorials_path, class: "btn btn-large" %>
-				</p>
-			</div>
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	window.addEventListener ? 
+	window.addEventListener("load",_init,false) : 
+	window.attachEvent && window.attachEvent("onload",_init);
+
+	function _init()
+	{
+		init();
+	}
+</script>

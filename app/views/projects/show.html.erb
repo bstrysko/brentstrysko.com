@@ -1,4 +1,24 @@
-<p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<div id="hero-unit">
+  <fieldset>
+    <legend><%= @project.name %></legend>
+    <ul class="media-list">
+      <li class="media well">
+        <% if !@project.image.nil? %>
+        <div class="pull-left">
+          <%= image_tag image_path(@project.image_id), class: "media-object, thumbnail", width: 200, height:200 %>
+        </div>
+        <% end %>
+        <div class="media-body">
+          <%= @project.content.html_safe %>
+        </div>
+      </li>
+    </ul>
+    <% if signed_in? %>
+    <div class="pull-right well">
+      <%= link_to 'Edit', edit_project_path(@project) %> |
+      <%= link_to 'Destroy', @project, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+    <% end %>
+  </fieldset>
+  <hr />
+</div>

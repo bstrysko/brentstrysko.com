@@ -1,17 +1,23 @@
 BrentstryskoCom::Application.routes.draw do
   devise_for :users
-  root "home#index"
+  root "home#index", name: "home"
 
   get "/about", to: "home#about"
-  #get "/resume", to: asset_path("brentstrysko_resume.pdf")
+  get "/resume", to: redirect("/brentstrysko_resume.pdf")
+  get "/iresume", to: "home#iresume"
 
   get "/blog", to: "posts#index"
 
   resources :posts
   resources :projects
   resources :tutorials
+  
+  get "/images/new", to: "images#new", as: :new_image
+  post "/images", to: "images#create"
+  get "/images/:id", to: "images#show", as: :image
+  delete "/images/:id", to: "images#destroy"
 
-  namespace :api do
+  scope '/api' do
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

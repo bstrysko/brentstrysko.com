@@ -1,17 +1,38 @@
-<%= form_for(@project) do |f| %>
-  <% if @project.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
-
-      <ul>
+<% if @project.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+    <ul>
       <% @project.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= form_for(@project) do |f| %>
+  <div class="well">
+    <label>Name</label>
+    <%= f.text_field :name %>
+    
+    <label>Url</label>
+    <%= f.text_field :url %>
 
-  <div class="actions">
-    <%= f.submit %>
+    <label>Image</label>
+    <%= f.collection_select(:image_id, @images, :id, :id, include_blank: true) %>
+
+    <label>Start Date</label>
+
+    <label>End Date</label>
+
+    <label>Blurb</label>
+    <%= f.text_area :blurb, size: "200x20" %>
+    
+    <label>Content</label>
+    <%= f.text_area :content, size: "200x20" %>
+
+    <hr />
+
+    <div class="actions">
+      <%= f.submit "Submit", class: "btn" %>
+    </div>
   </div>
 <% end %>

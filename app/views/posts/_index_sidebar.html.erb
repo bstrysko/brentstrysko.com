@@ -1,1 +1,11 @@
-Sidebar
+<ul class="nav nav-list">
+	<li class="nav-header">Post Statistics</li>
+	<li>
+		Total Posts: <%= @posts.count %>
+	</li>
+	<li>
+		Most Recent Post: <%= @posts[0].posted.to_formatted_s(:long) %>
+	</li>
+</ul>
+
+<hr />
