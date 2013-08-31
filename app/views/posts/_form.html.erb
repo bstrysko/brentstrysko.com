@@ -15,6 +15,18 @@
     <label>Content</label>
     <%= f.text_area :content, size: "200x20" %>
     
+    <label>Published</label>
+    <%= f.check_box :published %>
+    <br />
+
+    <label>Posted</label>
+    <div id="datetimepicker" class="input-append date">
+      <%= f.text_field :posted, value: @post.posted.to_formatted_s(:db), data: { format: "yyyy-MM-dd hh:mm:ss" } %>
+      <span class="add-on">
+        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+      </span>
+    </div>
+
     <hr />
 
     <label>Project</label>
@@ -30,3 +42,17 @@
     </div>
   </div>
 <% end %>
+<script type="text/javascript">
+  window.addEventListener ? 
+  window.addEventListener("load",_init,false) : 
+  window.attachEvent && window.attachEvent("onload",_init);
+
+  function _init()
+  {
+    var dt_picker = $('#datetimepicker'); 
+    
+    dt_picker.datetimepicker({
+      pickSeconds: false,
+    });
+  }
+</script>

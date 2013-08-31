@@ -15,4 +15,13 @@ class Post
 	validates :content, presence: true
 	validates :published, presence: true
 	validates :posted, presence: true
+
+	# So the posted textfield can read posted from a previous entry
+  def setup_posted
+    posted.to_s(:db)
+  end
+
+  def setup_posted=(posted_str)
+    self.posted = DateTime.parse(posted_str)
+  end
 end

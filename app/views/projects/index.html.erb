@@ -13,9 +13,11 @@
         <fieldset>
           <legend>
             <%= link_to project.name, project %>
+            <% if !project.url.nil? %>
             <div class="pull-right">
               <h6><%= link_to project.url.html_safe, project.url, target: "_blank" %></h6>
             </div>
+            <% end %>
           </legend>
           <ul class="media-list">
             <li class="media well">
