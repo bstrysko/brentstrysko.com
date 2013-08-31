@@ -11,7 +11,12 @@
     <% @projects.each do |project| %>
       <div id="hero-unit">
         <fieldset>
-          <legend><%= link_to project.name, project %></legend>
+          <legend>
+            <%= link_to project.name, project %>
+            <div class="pull-right">
+              <h6><%= link_to project.url.html_safe, project.url, target: "_blank" %></h6>
+            </div>
+          </legend>
           <ul class="media-list">
             <li class="media well">
               <% if !project.image.nil? %>

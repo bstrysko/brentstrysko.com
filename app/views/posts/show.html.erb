@@ -1,6 +1,11 @@
 <div id="hero-unit">
   <fieldset>
-    <legend><%= @post.title %></legend>
+    <legend>
+      <%= @post.title %>
+      <div class="pull-right">
+        <h6><%= @post.posted.to_formatted_s(:long) %></h6>
+      </div>
+    </legend>
     <div class="well">
       <%= @post.content.html_safe %>
     </div>
