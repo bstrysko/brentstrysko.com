@@ -4,7 +4,9 @@
 		Total Posts: <%= @posts.count %>
 	</li>
 	<li>
+		<% if !@posts[0].nil? %>
 		Most Recent Post: <%= @posts[0].posted.to_formatted_s(:long) %>
+		<% end %>
 	</li>
 </ul>
 
