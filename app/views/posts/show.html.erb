@@ -3,7 +3,9 @@
     <legend>
       <%= @post.title %>
       <div class="pull-right">
-        <h6><%= @post.posted.to_formatted_s(:long) %></h6>
+        <h6>
+          <strong>Posted:</strong> <em><%= @post.posted.to_formatted_s(:long) %></em>
+        </h6>
       </div>
     </legend>
     <div class="well">

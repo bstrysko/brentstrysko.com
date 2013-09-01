@@ -13,14 +13,14 @@
     <% @posts.each do |post| %>
       <div id="hero-unit">
         <fieldset>
-          <span>
           <legend>
             <%= link_to post.title, post %>
             <div class="pull-right">
-              <h6><%= post.posted.to_formatted_s(:long) %></h6>
+              <h6>
+                <strong>Posted:</strong> <em><%= post.posted.to_formatted_s(:long) %></em>
+              </h6>
             </div>
           </legend>
-        </span>
           <div class="well">
             <%= truncate(post.content.html_safe, :length => 80) %>
           </div>

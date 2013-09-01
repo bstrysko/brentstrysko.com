@@ -13,11 +13,26 @@
         <fieldset>
           <legend>
             <%= link_to project.name, project %>
-            <% if !project.url.nil? %>
             <div class="pull-right">
-              <h6><%= link_to project.url.html_safe, project.url, target: "_blank" %></h6>
+              <h6>
+                <strong>From:</strong>
+                <em>
+                <% if project.start_date.nil? %>
+                  -
+                <% else %>
+                  <%= project.start_date.to_formatted_s(:month_and_year) %>
+                <% end %>
+                </em>
+                to
+                <em>
+                <% if project.end_date.nil? %>
+                  Present
+                <% else %>
+                  <%= project.end_date.to_formatted_s(:month_and_year) %>
+                <% end %>
+                </em>
+              </h6>
             </div>
-            <% end %>
           </legend>
           <ul class="media-list">
             <li class="media well">
